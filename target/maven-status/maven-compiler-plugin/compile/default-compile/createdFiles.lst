@@ -1,0 +1,8 @@
+com\prototype\character\GameCharacter.class
+com\prototype\character\Warrior.class
+com\prototype\ui\PrototypeGUI.class
+com\prototype\character\BaseCharacter.class
+com\prototype\registry\CharacterRegistry.class
+com\prototype\character\Mage.class
+com\prototype\MainApplication.class
+com\prototype\character\Archer.class

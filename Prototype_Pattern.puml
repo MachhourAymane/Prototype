@@ -1,0 +1,66 @@
+@startuml Prototype_Pattern
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam classBackgroundColor #F0F0F0
+skinparam classBorderColor #333333
+skinparam arrowColor #333333
+
+title Design Pattern Prototype - Clonage de Personnages
+
+package "com.prototype.character" {
+    interface GameCharacter {
+        {abstract} +clone(): GameCharacter
+        {abstract} +displayInfo(): void
+        {abstract} +getType(): String
+    }
+
+    abstract class BaseCharacter {
+        #name: String
+        #healthPoints: int
+        #attack: int
+        #defense: int
+        
+        {abstract} +clone(): GameCharacter
+        +displayInfo(): void
+    }
+
+    class Warrior {
+        +clone(): GameCharacter
+        +getType(): String
+    }
+
+    class Archer {
+        +clone(): GameCharacter
+        +getType(): String
+    }
+
+    class Mage {
+        +clone(): GameCharacter
+        +getType(): String
+    }
+}
+
+package "com.prototype.registry" {
+    class CharacterRegistry {
+        -characterPrototypes: Map
+        
+        +register(name, prototype): void
+        +createClone(key): GameCharacter
+    }
+}
+
+package "com.prototype" {
+    class MainApplication {
+        {static} +main(): void
+    }
+}
+
+GameCharacter <|.. BaseCharacter
+BaseCharacter <|-- Warrior
+BaseCharacter <|-- Archer
+BaseCharacter <|-- Mage
+
+CharacterRegistry o-- GameCharacter
+MainApplication --> CharacterRegistry
+
+@enduml
